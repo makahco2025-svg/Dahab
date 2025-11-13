@@ -1276,27 +1276,35 @@
                 return;
             }
 
-            // إنشاء رسالة WhatsApp بالصيغة المطلوبة
+            // إنشاء رسالة WhatsApp بالصيغة المطلوبة بدون رموز
             const orderData = {
                 customer: { name, phone, address, email },
                 items: cart,
                 total: cart.reduce((sum, item) => sum + item.price * item.quantity, 0)
             };
 
-            let message = `بيانات الطلب%0A%0A`;
-            message += `اسم العميل: ${orderData.customer.name}%0A`;
-            message += `رقم الموبايل: ${orderData.customer.phone}%0A`;
-            message += `العنوان: ${orderData.customer.address}%0A`;
+            // استخدام Template Literals لإنشاء الرسالة مع أسطر جديدة حقيقية
+            let message = `بيانات الطلب
+
+اسم العميل: ${orderData.customer.name}
+رقم الموبايل: ${orderData.customer.phone}
+العنوان: ${orderData.customer.address}`;
             if (orderData.customer.email) {
-                message += `البريد الإلكتروني: ${orderData.customer.email}%0A`;
+                message += `
+البريد الإلكتروني: ${orderData.customer.email}`;
             }
             
-            message += `%0A---%0A%0A`;
-            message += `تفاصيل الطلب:%0A`;
+            message += `
+
+---
+تفاصيل الطلب:`;
             orderData.items.forEach(item => {
-                message += `- ${item.name} (الكمية: ${item.quantity}) - السعر: ${item.price} ج.م%0A`;
+                message += `
+- ${item.name} (الكمية: ${item.quantity}) - السعر: ${item.price} ج.م`;
             });
-            message += `%0Aالمجموع الكلي: ${orderData.total} جنيه مصري`;
+            message += `
+
+المجموع الكلي: ${orderData.total} جنيه مصري`;
 
             // رقم الهاتف الذي سيتم الإرسال إليه
             const phoneNumber = '201030566078';
