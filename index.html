@@ -287,28 +287,6 @@
             background: var(--light-gray);
         }
 
-        .mobile-search {
-            display: flex;
-            margin-bottom: 1rem;
-        }
-
-        .mobile-search input {
-            flex: 1;
-            padding: 0.8rem;
-            border: 1px solid #ddd;
-            border-radius: 0 5px 5px 0;
-            border-right: none;
-        }
-
-        .mobile-search button {
-            background: var(--primary-color);
-            color: var(--white);
-            border: none;
-            padding: 0.8rem 1rem;
-            border-radius: 5px 0 0 5px;
-            cursor: pointer;
-        }
-
         .mobile-menu-icons {
             display: flex;
             justify-content: space-around;
@@ -1122,8 +1100,7 @@
         }
 
         @media (max-width: 768px) {
-            .desktop-nav,
-            .search-box {
+            .desktop-nav {
                 display: none;
             }
             
@@ -1204,21 +1181,33 @@
             }
         }
         
-        /* --- حركات الرسوم المتحركة --- */
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-
-        @keyframes slideIn {
-            from { transform: translateY(-50px); opacity: 0; }
-            to { transform: translateY(0); opacity: 1; }
-        }
-
         /* --- تحسينات خاصة بالموبايل --- */
         @media (max-width: 480px) {
             .container {
                 padding: 0 15px;
+            }
+            
+            .main-header .container {
+                flex-wrap: wrap;
+                gap: 0.5rem;
+            }
+            
+            .header-actions {
+                order: 3;
+                width: 100%;
+                justify-content: center;
+                gap: 1rem;
+                margin-top: 0.5rem;
+            }
+            
+            .search-box {
+                order: 2;
+                width: 100%;
+            }
+            
+            .search-box input {
+                width: 100%;
+                max-width: 300px;
             }
             
             .products-grid {
@@ -1251,6 +1240,17 @@
                 font-size: 1.6rem;
                 margin: 1.5rem 0;
             }
+        }
+        
+        /* --- حركات الرسوم المتحركة --- */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideIn {
+            from { transform: translateY(-50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
         }
 
     </style>
@@ -1312,10 +1312,6 @@
             </ul>
         </nav>
         <div class="mobile-menu-actions">
-            <div class="mobile-search">
-                <input type="text" placeholder="ابحث عن نظارتك...">
-                <button><i class="fas fa-search"></i></button>
-            </div>
             <div class="mobile-menu-icons">
                 <a href="#" class="icon-link">
                     <i class="fas fa-shopping-cart"></i>
