@@ -5,9 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>دهب للنظارات - متجر متخصص للنظارات الطبية والشمسية</title>
     
-    <!-- إضافة أيقونة الموقع (Favicon) -->
-    <link rel="icon" href="https://picsum.photos/seed/favicon/32/32.jpg" type="image/x-icon">
-    
     <!-- ربط خط عربي احترافي من Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -304,6 +301,102 @@
             background-color: var(--primary-color);
         }
 
+        /* --- قسم العروض الخاصة --- */
+        .offers-section {
+            background: linear-gradient(135deg, var(--secondary-color), #34495e);
+            padding: 3rem 0;
+            margin: 3rem 0;
+            border-radius: 15px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .offers-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 300px;
+            height: 300px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+        }
+
+        .offers-section::after {
+            content: '';
+            position: absolute;
+            bottom: -50%;
+            left: -10%;
+            width: 200px;
+            height: 200px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+        }
+
+        .offers-title {
+            color: var(--white);
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 1rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .offers-subtitle {
+            color: rgba(255, 255, 255, 0.9);
+            text-align: center;
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .offers-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .offer-card {
+            background: var(--white);
+            border-radius: 15px;
+            padding: 1.5rem;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .offer-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .offer-icon {
+            font-size: 3rem;
+            color: var(--secondary-color);
+            margin-bottom: 1rem;
+        }
+
+        .offer-title {
+            font-size: 1.5rem;
+            color: var(--secondary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .offer-description {
+            color: var(--text-color);
+            margin-bottom: 1rem;
+        }
+
+        .offer-discount {
+            font-size: 2rem;
+            font-weight: 900;
+            color: var(--secondary-color);
+            margin-bottom: 1rem;
+        }
+
         /* --- الأزرار --- */
         .btn {
             display: inline-block;
@@ -323,6 +416,17 @@
         .btn-primary:hover {
             background-color: #b8941f;
             transform: translateY(-2px);
+        }
+
+        .btn-white {
+            background-color: var(--white);
+            color: var(--secondary-color);
+            border: 2px solid var(--white);
+        }
+
+        .btn-white:hover {
+            background-color: transparent;
+            color: var(--white);
         }
         
         .btn-danger {
@@ -378,6 +482,7 @@
             text-align: center;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             cursor: pointer;
+            position: relative;
         }
 
         .product-card:hover {
@@ -402,6 +507,26 @@
             font-weight: 700;
             color: var(--primary-color);
             margin-bottom: 1rem;
+        }
+
+        .product-card .old-price {
+            font-size: 1rem;
+            color: #999;
+            text-decoration: line-through;
+            margin-left: 0.5rem;
+        }
+
+        .product-card .discount-badge {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background-color: var(--danger-color);
+            color: var(--white);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            z-index: 2;
         }
 
         .product-card .btn {
@@ -704,11 +829,12 @@
         .footer-links ul li a {
             display: block;
             padding: 0.3rem 0;
-            color: var(--white); /* <-- التعديل الأول: جعل اللون أبيض */
+            color: var(--white);
+            transition: color 0.3s ease;
         }
 
         .footer-links ul li a:hover {
-            color: var(--primary-color); /* <-- التعديل الثاني: تغيير اللون عند التمرير */
+            color: var(--primary-color);
         }
 
         .footer-contact p {
@@ -734,7 +860,7 @@
             padding-top: 1.5rem;
             margin-top: 2rem;
         }
-        
+
         /* --- تصميم متجاوب (Responsive) --- */
         @media (max-width: 992px) {
             .main-header .container {
@@ -823,6 +949,9 @@
             .product-card img {
                 height: 200px;
             }
+            .offers-grid {
+                grid-template-columns: 1fr;
+            }
             .logo {
                 gap: 10px;
             }
@@ -866,7 +995,7 @@
     <header class="main-header">
         <div class="container">
             <a href="#" class="logo">
-                <img src="https://picsum.photos/seed/logo/100/50.jpg" alt="دهب للنظارات">
+                <img src="https://picsum.photos/seed/glasses-logo/200/200.jpg" alt="دهب للنظارات">
                 <h1>دهب للنظارات</h1>
             </a>
             
@@ -876,7 +1005,7 @@
 
             <nav class="main-nav" id="main-nav">
                 <ul>
-                    <li><a href="#featured" class="nav-link">الرئيسية</a></li>
+                    <li><a href="#home" class="nav-link">الرئيسية</a></li>
                     <li><a href="#men" class="nav-link">للرجال</a></li>
                     <li><a href="#women" class="nav-link">للنساء</a></li>
                     <li><a href="#kids" class="nav-link">للأطفال</a></li>
@@ -903,27 +1032,27 @@
         <section id="home" class="slider">
             <div class="slider-wrapper">
                 <div class="slide active">
-                    <img src="https://picsum.photos/seed/slide1/1920/1080.jpg" alt="مجموعة الصيف الجديدة">
+                    <img src="https://picsum.photos/seed/sunglasses-summer/1920/1080.jpg" alt="مجموعة الصيف الجديدة">
                     <div class="slide-content">
                         <h2>مجموعة الصيف الجديدة</h2>
                         <p>شمسية طبية بأناقة لا مثيل لها</p>
-                        <a href="#featured" class="btn btn-primary">تسوق الآن</a>
+                        <a href="#home" class="btn btn-primary">تسوق الآن</a>
                     </div>
                 </div>
                 <div class="slide">
-                    <img src="https://picsum.photos/seed/slide2/1920/1080.jpg" alt="عروض حصرية">
+                    <img src="https://picsum.photos/seed/eyeglasses-offer/1920/1080.jpg" alt="عروض حصرية">
                     <div class="slide-content">
                         <h2>عروض حصرية</h2>
                         <p>خصم يصل إلى 30% على ماركات عالم العالمية</p>
-                        <a href="#featured" class="btn btn-primary">شاهد العروض</a>
+                        <a href="#home" class="btn btn-primary">شاهد العروض</a>
                     </div>
                 </div>
                 <div class="slide">
-                    <img src="https://picsum.photos/seed/slide3/1920/1080.jpg" alt="نظارات الأطفال">
+                    <img src="https://picsum.photos/seed/kids-glasses/1920/1080.jpg" alt="نظارات الأطفال">
                     <div class="slide-content">
                         <h2>لأعين أغلى الناس</h2>
                         <p>مجموعة خاصة للأطفال بأمان وراحة</p>
-                        <a href="#featured" class="btn btn-primary">اكتشف المجموعة</a>
+                        <a href="#kids" class="btn btn-primary">اكتشف المجموعة</a>
                     </div>
                 </div>
             </div>
@@ -935,10 +1064,55 @@
         </section>
 
         <!-- قسم المنتجات المميزة -->
-        <section id="featured" class="category-section container">
+        <section id="featured" class="category-section container" style="display:none;">
             <h2 class="section-title">منتجاتنا المميزة</h2>
             <div class="products-grid category-featured" id="productsContainer">
                 <!-- المنتجات ستضاف هنا بواسطة JavaScript -->
+            </div>
+        </section>
+
+        <!-- قسم العروض الخاصة -->
+        <section id="offers" class="offers-section" style="display:none;">
+            <div class="container">
+                <h2 class="offers-title">أفضل العروض</h2>
+                <p class="offers-subtitle">فرصة ذهبية للحصول على أجمل النظارات بأفضل الأسعار</p>
+                <div class="offers-grid">
+                    <div class="offer-card">
+                        <div class="offer-icon">
+                            <i class="fas fa-percentage"></i>
+                        </div>
+                        <h3 class="offer-title">خصم 30%</h3>
+                        <p class="offer-description">على جميع النظارات الشمسية</p>
+                        <div class="offer-discount">وفر حتى 1500 جنيه</div>
+                        <a href="#sale-products" class="btn btn-white">شاهد العروض</a>
+                    </div>
+                    <div class="offer-card">
+                        <div class="offer-icon">
+                            <i class="fas fa-gift"></i>
+                        </div>
+                        <h3 class="offer-title">اشتر 2 واحصل على 1</h3>
+                        <p class="offer-description">على جميع العدسات اللاصقة</p>
+                        <div class="offer-discount">أفضل صفقة هذا العام</div>
+                        <a href="#lenses" class="btn btn-white">تسوق الآن</a>
+                    </div>
+                    <div class="offer-card">
+                        <div class="offer-icon">
+                            <i class="fas fa-shipping-fast"></i>
+                        </div>
+                        <h3 class="offer-title">توصيل مجاني</h3>
+                        <p class="offer-description">للطلبات فوق 500 جنيه</p>
+                        <div class="offer-discount">وفر 50 جنيه</div>
+                        <a href="#featured" class="btn btn-white">تسوق الآن</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- قسم منتجات العروض -->
+        <section id="sale-products" class="category-section container" style="display:none;">
+            <h2 class="section-title">منتجات مخفضة</h2>
+            <div class="products-grid category-sale" id="saleProductsContainer">
+                <!-- المنتجات المخفضة ستضاف هنا بواسطة JavaScript -->
             </div>
         </section>
 
@@ -988,7 +1162,7 @@
                 <div class="footer-links">
                     <h4>روابط سريعة</h4>
                     <ul>
-                        <li><a href="#featured" class="nav-link">الرئيسية</a></li>
+                        <li><a href="#home" class="nav-link">الرئيسية</a></li>
                         <li><a href="#men" class="nav-link">للرجال</a></li>
                         <li><a href="#women" class="nav-link">لنساء</a></li>
                         <li><a href="#kids" class="nav-link">للأطفال</a></li>
@@ -997,20 +1171,15 @@
                 </div>
                 <div class="footer-contact" id="contact">
                     <h4>تواصل معنا</h4>
-                    <div class="contact-info-with-logo">
-                        <img src="https://picsum.photos/seed/logo/100/50.jpg" alt="دهب للنظارات" class="footer-logo">
-                        <div class="contact-details">
-                            <a href="https://www.google.com/maps/search/?api=1&query=26+شارع+جلال،+وسط+القاهرة،+مصر" target="_blank" rel="noopener noreferrer">
-                                <p><i class="fas fa-map-marker-alt"></i> 26 شارع جلال، وسط القاهرة، مصر</p>
-                            </a>
-                            <a href="tel:+201030566078">
-                                <p><i class="fas fa-phone"></i> +20 1030566078</p>
-                            </a>
-                            <a href="mailto:info@dhahab-eyewear.com">
-                                <p><i class="fas fa-envelope"></i> info@dhahab-eyewear.com</p>
-                            </a>
-                        </div>
-                    </div>
+                    <a href="https://www.google.com/maps/search/?api=1&query=26+شارع+جلال،+وسط+القاهرة،+مصر" target="_blank" rel="noopener noreferrer">
+                        <p><i class="fas fa-map-marker-alt"></i> 26 شارع جلال، وسط القاهرة، مصر</p>
+                    </a>
+                    <a href="tel:+201030566078">
+                        <p><i class="fas fa-phone"></i> +20 1030566078</p>
+                    </a>
+                    <a href="mailto:info@dhahab-eyewear.com">
+                        <p><i class="fas fa-envelope"></i> info@dhahab-eyewear.com</p>
+                    </a>
                 </div>
             </div>
             <div class="footer-bottom">
@@ -1022,7 +1191,7 @@
     <!-- حاوية رسائل التنبيه -->
     <div class="toast-container" id="toast-container"></div>
 
-    <!-- نافذة السلة -->
+    <!-- نافذة السلة المنبثقة -->
     <div id="cart-modal" class="modal">
         <div class="modal-content">
             <div class="modal-header">
@@ -1030,7 +1199,7 @@
                 <span class="close-btn" id="close-cart-modal-btn">&times;</span>
             </div>
             <div class="cart-items" id="cart-items-container">
-                <!-- سيتم عرض عناصر السلة هنا -->
+                <!-- عناصر السلة ستضاف هنا بواسطة JavaScript -->
             </div>
             <div class="cart-summary">
                 <h3>المجموع: <span id="cart-total">0</span> جنيه مصري</h3>
@@ -1056,7 +1225,7 @@
                         <input type="text" id="customer-name" required>
                     </div>
                     <div class="form-group">
-                        <label for="customer-phone">رقم الموبايل <span class="required">*</span></label>
+                        <label for="customer-phone">رقم الهاتف <span class="required">*</span></label>
                         <input type="tel" id="customer-phone" required>
                     </div>
                     <div class="form-group">
@@ -1068,11 +1237,11 @@
                         <input type="text" id="customer-city" required>
                     </div>
                     <div class="form-group full-width">
-                        <label for="customer-address">العنوان <span class="required">*</span></label>
+                        <label for="customer-address">عنوان التوصيل <span class="required">*</span></label>
                         <textarea id="customer-address" required></textarea>
                     </div>
                     <div class="form-group full-width">
-                        <label for="customer-notes">ملاحظات إضافية (اختياري)</label>
+                        <label for="customer-notes">ملاحظات إضافية</label>
                         <textarea id="customer-notes"></textarea>
                     </div>
                 </div>
@@ -1080,7 +1249,7 @@
                 <div class="order-summary-box">
                     <h4>ملخص الطلب</h4>
                     <div id="order-summary-items">
-                        <!-- سيتم عرض ملخص الطلب هنا -->
+                        <!-- عناصر الطلب ستضاف هنا بواسطة JavaScript -->
                     </div>
                     <div class="order-summary-total">
                         <span>المجموع الكلي:</span>
@@ -1102,25 +1271,35 @@
 
         // --- بياناتات المنتجات ---
         const products = [
-            { id: 1, name: 'نظارة رجالية كلاسيك', price: 2500, category: 'men', image: 'https://picsum.photos/seed/men1/300/200.jpg' },
-            { id: 2, name: 'نظارة شمسية رياضية', price: 3200, category: 'men', image: 'https://picsum.photos/seed/men2/300/200.jpg' },
-            { id: 3, name: 'نظارة طبية أنيقة', price: 2800, category: 'men', image: 'https://picsum.photos/seed/men3/300/200.jpg' },
-            { id: 4, name: 'نظارة نسائية فاخرة', price: 4500, category: 'women', image: 'https://picsum.photos/seed/women1/300/200.jpg' },
-            { id: 5, name: 'نظارة شمسية بتصميم كات آي', price: 3500, category: 'women', image: 'https://picsum.photos/seed/women2/300/200.jpg' },
-            { id: 6, name: 'نظارة طبية خفيفة', price: 2200, category: 'women', image: 'https://picsum.photos/seed/women3/300/200.jpg' },
-            { id: 7, name: 'نظارات أطفال ملونة', price: 1200, category: 'kids', image: 'https://picsum.photos/seed/kids1/300/200.jpg' },
-            { id: 8, name: 'نظارات طبية للأطفال', price: 1500, category: 'kids', image: 'https://picsum.photos/seed/kids2/300/200.jpg' },
-            { id: 9, name: 'نظارات شمسية للأطفال', price: 950, category: 'kids', image: 'https://picsum.photos/seed/kids3/300/200.jpg' },
-            { id: 10, name: 'عدسات لاصقة يومية', price: 450, category: 'lenses', image: 'https://picsum.photos/seed/lenses1/300/200.jpg' },
-            { id: 11, name: 'عدسات طبية ملونة', price: 1200, category: 'lenses', image: 'https://picsum.photos/seed/lenses2/300/200.jpg' },
-            { id: 12, name: 'عدسات لاصقة شهرية', price: 650, category: 'lenses', image: 'https://picsum.photos/seed/lenses3/300/200.jpg' },
+            { id: 1, name: 'نظارة رجالية كلاسيك', price: 2500, category: 'men', image: 'https://picsum.photos/seed/men-glasses1/400/300.jpg' },
+            { id: 2, name: 'نظارة شمسية رياضية', price: 3200, category: 'men', image: 'https://picsum.photos/seed/men-sunglasses2/400/300.jpg' },
+            { id: 3, name: 'نظارة طبية أنيقة', price: 2800, category: 'men', image: 'https://picsum.photos/seed/men-eyeglasses3/400/300.jpg' },
+            { id: 4, name: 'نظارة نسائية فاخرة', price: 4500, category: 'women', image: 'https://picsum.photos/seed/women-glasses1/400/300.jpg' },
+            { id: 5, name: 'نظارة شمسية بتصميم كات آي', price: 3500, category: 'women', image: 'https://picsum.photos/seed/women-sunglasses2/400/300.jpg' },
+            { id: 6, name: 'نظارة طبية خفيفة', price: 2200, category: 'women', image: 'https://picsum.photos/seed/women-eyeglasses3/400/300.jpg' },
+            { id: 7, name: 'نظارات أطفال ملونة', price: 1200, category: 'kids', image: 'https://picsum.photos/seed/kids-glasses1/400/300.jpg' },
+            { id: 8, name: 'نظارات طبية للأطفال', price: 1500, category: 'kids', image: 'https://picsum.photos/seed/kids-eyeglasses2/400/300.jpg' },
+            { id: 9, name: 'نظارات شمسية للأطفال', price: 950, category: 'kids', image: 'https://picsum.photos/seed/kids-sunglasses3/400/300.jpg' },
+            { id: 10, name: 'عدسات لاصقة يومية', price: 450, category: 'lenses', image: 'https://picsum.photos/seed/daily-lenses1/400/300.jpg' },
+            { id: 11, name: 'عدسات طبية ملونة', price: 1200, category: 'lenses', image: 'https://picsum.photos/seed/colored-lenses2/400/300.jpg' },
+            { id: 12, name: 'عدسات لاصقة شهرية', price: 650, category: 'lenses', image: 'https://picsum.photos/seed/monthly-lenses3/400/300.jpg' },
+            // منتجات مخفضة
+            { id: 13, name: 'نظارة شمسية رجالية', price: 2800, oldPrice: 4000, discount: 30, category: 'men', image: 'https://picsum.photos/seed/men-sale-glasses1/400/300.jpg' },
+            { id: 14, name: 'نظارة طبية نسائية', price: 3150, oldPrice: 4500, discount: 30, category: 'women', image: 'https://picsum.photos/seed/women-sale-glasses2/400/300.jpg' },
+            { id: 15, name: 'نظارات أطفال كرتونية', price: 700, oldPrice: 1000, discount: 30, category: 'kids', image: 'https://picsum.photos/seed/kids-sale-glasses3/400/300.jpg' },
+            { id: 16, name: 'عدسات لاصقة أسبوعية', price: 420, oldPrice: 600, discount: 30, category: 'lenses', image: 'https://picsum.photos/seed/lenses-sale4/400/300.jpg' },
+            { id: 17, name: 'نظارة شمسية نسائية', price: 2450, oldPrice: 3500, discount: 30, category: 'women', image: 'https://picsum.photos/seed/women-sale-sunglasses5/400/300.jpg' },
+            { id: 18, name: 'نظارة رجالية كلاسيكية', price: 1750, oldPrice: 2500, discount: 30, category: 'men', image: 'https://picsum.photos/seed/men-sale-classic6/400/300.jpg' },
         ];
 
         // --- عناصر DOM ---
         const searchInput = document.getElementById('searchInput');
+        const slider = document.querySelector('.slider');
         const cartCountElement = document.getElementById('cart-count');
         const toastContainer = document.getElementById('toast-container');
         const cartIcon = document.getElementById('cart-icon');
+        const menuToggle = document.getElementById('mobile-menu');
+        const mainNav = document.getElementById('main-nav');
         
         // عناصر نافذة السلة
         const cartModal = document.getElementById('cart-modal');
@@ -1238,7 +1417,7 @@
             cartTotalElement.textContent = total;
         }
 
-        // --- دوالنافذة إتمام الطلب ---
+        // --- دوال نافذة إتمام الطلب ---
         function openCheckoutModal() {
             renderOrderSummary();
             checkoutModal.classList.add('show');
@@ -1269,42 +1448,32 @@
             const name = document.getElementById('customer-name').value.trim();
             const phone = document.getElementById('customer-phone').value.trim();
             const address = document.getElementById('customer-address').value.trim();
-            const email = document.getElementById('customer-email').value.trim();
 
             if (!name || !phone || !address) {
                 showToast('يرجى ملء جميع الحقول الإجبارية', 'warning');
                 return;
             }
 
-            // إنشاء رسالة WhatsApp بالصيغة المطلوبة بدون رموز
+            // إنشاء رسالة WhatsApp
             const orderData = {
-                customer: { name, phone, address, email },
+                customer: { name, phone, address },
                 items: cart,
                 total: cart.reduce((sum, item) => sum + item.price * item.quantity, 0)
             };
 
-            // استخدام Template Literals لإنشاء الرسالة مع أسطر جديدة حقيقية
-            let message = `بيانات الطلب
-
-اسم العميل: ${orderData.customer.name}
-رقم الموبايل: ${orderData.customer.phone}
-العنوان: ${orderData.customer.address}`;
-            if (orderData.customer.email) {
-                message += `
-البريد الإلكتروني: ${orderData.customer.email}`;
+            let message = `طلب جديد من متجر دهب للنظارات!%0A%0A`;
+            message += `**بيانات العميل:**%0A`;
+            message += `الاسم: ${orderData.customer.name}%0A`;
+            message += `رقم الهاتف: ${orderData.customer.phone}%0A`;
+            message += `العنوان: ${orderData.customer.address}%0A`;
+            if (document.getElementById('customer-email').value) {
+                message += `البريد الإلكتروني: ${document.getElementById('customer-email').value.trim()}%0A`;
             }
-            
-            message += `
-
----
-تفاصيل الطلب:`;
+            message += `%0A**المنتجات المطلوبة:**%0A`;
             orderData.items.forEach(item => {
-                message += `
-- ${item.name} (الكمية: ${item.quantity}) - السعر: ${item.price} ج.م`;
+                message += `- ${item.name} (الكمية: ${item.quantity}) - السعر: ${item.price} ج.م%0A`;
             });
-            message += `
-
-المجموع الكلي: ${orderData.total} جنيه مصري`;
+            message += `%0A**المجموع الكلي:** ${orderData.total} جنيه مصري`;
 
             // رقم الهاتف الذي سيتم الإرسال إليه
             const phoneNumber = '201030566078';
@@ -1340,10 +1509,25 @@
             productsToDisplay.forEach(product => {
                 const productCard = document.createElement('div');
                 productCard.className = 'product-card';
+                
+                let priceHtml = `<div class="price">${product.price} جنيه مصري</div>`;
+                let discountBadge = '';
+                
+                if (product.oldPrice) {
+                    priceHtml = `
+                        <div class="price">
+                            ${product.price} جنيه مصري
+                            <span class="old-price">${product.oldPrice} جنيه</span>
+                        </div>
+                    `;
+                    discountBadge = `<div class="discount-badge">خصم ${product.discount}%</div>`;
+                }
+                
                 productCard.innerHTML = `
+                    ${discountBadge}
                     <img src="${product.image}" alt="${product.name}">
                     <h3>${product.name}</h3>
-                    <div class="price">${product.price} جنيه مصري</div>
+                    ${priceHtml}
                     <button class="btn btn-primary add-to-cart-btn" data-product-id="${product.id}">أضف للسلة</button>
                 `;
                 container.appendChild(productCard);
@@ -1355,6 +1539,11 @@
             displayProducts(featuredProducts, '.category-featured');
         }
         
+        function displaySaleProducts() {
+            const saleProducts = products.filter(p => p.discount);
+            displayProducts(saleProducts, '.category-sale');
+        }
+        
         function displayCategoryProducts(category) {
             const categoryProducts = products.filter(p => p.category === category);
             displayProducts(categoryProducts, `.category-${category}`);
@@ -1364,124 +1553,135 @@
         let currentSlide = 0;
         let slideInterval;
 
-        function showSlide(index) {
+        function createIndicators() {
+            const indicatorsContainer = document.querySelector('.slider-indicators');
+            const slides = document.querySelectorAll('.slide');
+            
+            for (let i = 0; i < slides.length; i++) {
+                const indicator = document.createElement('div');
+                indicator.className = i === 0 ? 'indicator active' : 'indicator';
+                indicator.addEventListener('click', () => {
+                    goToSlide(i);
+                    resetSlideInterval();
+                });
+                indicatorsContainer.appendChild(indicator);
+            }
+        }
+
+        function goToSlide(n) {
             const slides = document.querySelectorAll('.slide');
             const indicators = document.querySelectorAll('.indicator');
             
-            if (slides.length === 0) return;
+            slides[currentSlide].classList.remove('active');
+            indicators[currentSlide].classList.remove('active');
             
-            slides.forEach(slide => slide.classList.remove('active'));
-            indicators.forEach(indicator => indicator.classList.remove('active'));
+            currentSlide = (n + slides.length) % slides.length;
             
-            currentSlide = (index + slides.length) % slides.length;
             slides[currentSlide].classList.add('active');
             indicators[currentSlide].classList.add('active');
         }
 
         function nextSlide() {
-            showSlide(currentSlide + 1);
+            goToSlide(currentSlide + 1);
         }
 
         function prevSlide() {
-            showSlide(currentSlide - 1);
+            goToSlide(currentSlide - 1);
         }
 
-        function createIndicators() {
-            const slides = document.querySelectorAll('.slide');
-            const indicatorsContainer = document.querySelector('.slider-indicators');
-            
-            if (!indicatorsContainer || slides.length === 0) return;
-            
-            indicatorsContainer.innerHTML = '';
-            
-            slides.forEach((_, index) => {
-                const indicator = document.createElement('div');
-                indicator.className = 'indicator';
-                if (index === 0) indicator.classList.add('active');
-                indicator.addEventListener('click', () => {
-                    clearInterval(slideInterval);
-                    showSlide(index);
-                    slideInterval = setInterval(nextSlide, 5000);
-                });
-                indicatorsContainer.appendChild(indicator);
-            });
+        function resetSlideInterval() {
+            clearInterval(slideInterval);
+            slideInterval = setInterval(nextSlide, 5000);
         }
 
         // --- دوال التنقل بين الأقسام ---
         function showSection(sectionId) {
-            const sections = document.querySelectorAll('.category-section');
-            sections.forEach(section => {
+            // إخفاء جميع الأقسام
+            document.querySelectorAll('.category-section, .offers-section').forEach(section => {
                 section.style.display = 'none';
             });
             
-            const featuredSection = document.getElementById('featured');
-            if (sectionId === 'featured' || sectionId === 'home') {
-                featuredSection.style.display = 'block';
+            // إظهار القسم المطلوب
+            if (sectionId === 'home') {
+                // عرض المنتجات المميزة والعروض عند الضغط على الرئيسية
+                document.getElementById('featured').style.display = 'block';
+                document.getElementById('offers').style.display = 'block';
             } else {
                 const targetSection = document.getElementById(sectionId);
                 if (targetSection) {
                     targetSection.style.display = 'block';
                 }
             }
+            
+            // إغلاق القائمة الجانبية على الشاشات الصغيرة
+            if (window.innerWidth <= 768) {
+                mainNav.classList.remove('is-active');
+            }
         }
 
-        // --- تفويض الأحداث --- -->
+        // --- مستمعو الأحداث ---
         document.addEventListener('click', function(e) {
+            // زر الإضافة للسلة
             if (e.target.classList.contains('add-to-cart-btn')) {
                 e.preventDefault();
                 const productId = parseInt(e.target.getAttribute('data-product-id'));
                 addToCart(productId);
             }
+            
+            // زر حذف من السلة
             if (e.target.classList.contains('cart-item-remove')) {
                 const productId = parseInt(e.target.getAttribute('data-product-id'));
                 removeFromCart(productId);
             }
-            if (e.target.classList.contains('prev-btn')) {
-                clearInterval(slideInterval);
-                prevSlide();
-                slideInterval = setInterval(nextSlide, 5000);
-            }
-            if (e.target.classList.contains('next-btn')) {
-                clearInterval(slideInterval);
-                nextSlide();
-                slideInterval = setInterval(nextSlide, 5000);
-            }
-            if (e.target.classList.contains('nav-link')) {
-                e.preventDefault();
-                const targetId = e.target.getAttribute('href').substring(1);
-                showSection(targetId);
-                
-                // التمرير إلى القسم المحدد
-                const targetSection = document.getElementById(targetId);
-                if (targetSection) {
-                    window.scrollTo({
-                        top: targetSection.offsetTop - 80,
-                        behavior: 'smooth'
-                    });
-                }
-            }
         });
 
-        // --- مستمعو أحداث الأحداث ---
+        // القائمة الجانبية للأجهزة المحمولة
+        menuToggle.addEventListener('click', function() {
+            mainNav.classList.toggle('is-active');
+        });
+
+        // التنقل بين الأقسام
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href').substring(1);
+                showSection(targetId);
+            });
+        });
+
+        // أزرار السلايدر
+        document.querySelector('.prev-btn').addEventListener('click', () => {
+            prevSlide();
+            resetSlideInterval();
+        });
+
+        document.querySelector('.next-btn').addEventListener('click', () => {
+            nextSlide();
+            resetSlideInterval();
+        });
+
+        // نافذة السلة
         cartIcon.addEventListener('click', openCartModal);
         closeCartModalBtn.addEventListener('click', closeCartModal);
         proceedToCheckoutBtn.addEventListener('click', () => {
+            if (cart.length === 0) {
+                showToast('سلتك فارغة، يرجى إضافة منتجات أولاً', 'warning');
+                return;
+            }
             closeCartModal();
             openCheckoutModal();
         });
-        backToShopBtn.addEventListener('click', () => {
-            closeCartModal();
-            showSection('featured');
-        });
+        backToShopBtn.addEventListener('click', closeCartModal);
 
-        checkoutForm.addEventListener('submit', submitOrder);
-
-        // --- مستمعو أحداث النقر على النموذج ---
+        // نافذة إتمام الطلب
+        closeCheckoutModalBtn.addEventListener('click', closeCheckoutModal);
         backToCartBtn.addEventListener('click', () => {
             closeCheckoutModal();
             openCartModal();
         });
-        closeCheckoutModalBtn.addEventListener('click', closeCheckoutModal);
+        checkoutForm.addEventListener('submit', submitOrder);
+
+        // إغلاق النوافذ المنبثقة عند النقر خارجها
         window.addEventListener('click', function(e) {
             if (e.target === cartModal) {
                 closeCartModal();
@@ -1491,65 +1691,55 @@
             }
         });
 
-        // --- قائمة الجوال ---
-        const mobileMenu = document.getElementById('mobile-menu');
-        const mainNav = document.getElementById('main-nav');
-        
-        mobileMenu.addEventListener('click', function() {
-            mainNav.classList.toggle('is-active');
+        // البحث عن المنتجات
+        searchInput.addEventListener('input', function() {
+            const searchTerm = this.value.toLowerCase();
+            
+            if (searchTerm === '') {
+                showSection('home');
+                return;
+            }
+            
+            const filteredProducts = products.filter(product => 
+                product.name.toLowerCase().includes(searchTerm)
+            );
+            
+            // عرض المنتجات المطابقة
+            document.querySelectorAll('.category-section, .offers-section').forEach(section => {
+                section.style.display = 'none';
+            });
+            
+            const featuredSection = document.getElementById('featured');
+            featuredSection.style.display = 'block';
+            displayProducts(filteredProducts, '.category-featured');
+            
+            if (filteredProducts.length === 0) {
+                document.querySelector('.category-featured').innerHTML = '<p style="text-align: center; color: #888; margin: 2rem 0;">لم يتم العثور على منتجات تطابق بحثك</p>';
+            }
         });
 
         // --- تهيئة الصفحة ---
-        function initializeProducts() {
+        function initializePage() {
             displayFeaturedProducts();
+            displaySaleProducts();
             displayCategoryProducts('men');
             displayCategoryProducts('women');
             displayCategoryProducts('kids');
             displayCategoryProducts('lenses');
+            updateCartCount();
+            createIndicators();
+            slideInterval = setInterval(nextSlide, 5000);
+            
+            // إخفاء جميع الأقسام عند تحميل الصفحة
+            document.querySelectorAll('.category-section, .offers-section').forEach(section => {
+                section.style.display = 'none';
+            });
         }
 
-        // --- تهيئة الصفحة عند التحميل ---
-        initializeProducts();
-        updateCartCount();
-        showSection('featured');
-        
-        // تهيئة السلايدر
-        createIndicators();
-        slideInterval = setInterval(nextSlide, 5000);
-
+        // بدء تشغيل الصفحة
+        initializePage();
     });
     </script>
-    <!-- CSS لإضافة اللوجو بجوار العنوان -->
-    <style>
-        .contact-info-with-logo {
-            display: flex;
-            align-items: flex-start;
-            gap: 15px;
-        }
 
-        .footer-logo {
-            height: 50px;
-            width: auto;
-            border-radius: 5px;
-            flex-shrink: 0; /* لمنع اللوجو من الانكماش */
-        }
-
-        .contact-details {
-            display: flex;
-            flex-direction: column;
-        }
-        
-        /* تصميم متجاوب للشاشات الصغيرة */
-        @media (max-width: 480px) {
-            .contact-info-with-logo {
-                flex-direction: column;
-                align-items: center;
-                text-align: center;
-            }
-            .footer-logo {
-                margin-bottom: 10px;
-            }
-        }
-    </style>
 </body>
 </html>
